@@ -90,13 +90,14 @@
                 shape3 = new createjs.Shape(graphics);
                 
                 var img = new Image();  
-
                 img.src = "images/yeoman.png"; // image from folder        
-                var loading_img = new createjs.Bitmap(img);  
-
+                var loading_img = new createjs.Bitmap(img);                  
+                stage.addChild(shape3);
                 
-            stage.addChild(shape3);
-            stage.addChild(loading_img);
+                img.onload = function() {
+                   stage.addChild(loading_img);
+                }
+            
             stage.update(); });
             
 
