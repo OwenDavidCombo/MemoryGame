@@ -30,11 +30,8 @@
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
-<<<<<<< HEAD
             var text2 = new createjs.Text("start", "bold 30px Lato", "#000000");           
-=======
-            var text2 = new createjs.Text("Start", "bold 39px Lato", "#000000");           
->>>>>>> origin/master
+
             
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
             var shape = new createjs.Shape(graphics);
@@ -54,48 +51,15 @@
                 shape3 = new createjs.Shape(graphics);
                 
                 var img = new Image();  
-<<<<<<< HEAD
-                img.src = "/images/yeoman.png"; // image from folder        
-                var loading_img = new createjs.Bitmap(img);                  
-=======
+
                 img.src = "images/yeoman.png"; // image from folder        
                 var loading_img = new createjs.Bitmap(img);  
-                             
->>>>>>> origin/master
+
                 
                 stage.addChild(shape3);
                 stage.addChild(loading_img);
                 stage.update(); });
             
-<<<<<<< HEAD
-=======
-            shape.addEventListener("click", function(event) {
-                graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
-                shape3 = new createjs.Shape(graphics);
-                
-                var img = new Image();  
-                img.src = "images/yeoman.png"; // image from folder        
-                var loading_img = new createjs.Bitmap(img);  
-                             
-                
-                stage.addChild(shape3);
-                stage.addChild(loading_img);
-                stage.update(); });
-            
-            shape2.addEventListener("click", function(event) {
-                 graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
-                shape3 = new createjs.Shape(graphics);
-                
-                var img = new Image();  
-                img.src = "images/yeoman.png"; // image from folder        
-                var loading_img = new createjs.Bitmap(img);  
-                             
-                
-                stage.addChild(shape3);
-                stage.addChild(loading_img);
-                stage.update(); });     
-            
->>>>>>> origin/master
             stage.addChild(text);
             stage.addChild(buttonContainer);
             stage.update();
