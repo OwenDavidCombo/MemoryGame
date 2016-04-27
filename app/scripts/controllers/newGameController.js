@@ -26,7 +26,7 @@
             canvas.style.height = 600 + "px";
             canvas.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
 
-            
+            context =canvas.getContext("2d");
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
