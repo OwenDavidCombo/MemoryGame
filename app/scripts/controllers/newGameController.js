@@ -72,37 +72,35 @@
             text = centerThis(canvas,text);        
             text2 = centerThis(canvas,text2);
             text2.y = text2.y+75;
-            
+            stage.enableMouseOver(10);
             buttonContainer = new createjs.Container();
             buttonContainer.addChild(shape,shape2,text2);
             butWidth=buttonContainer.getBounds.width;
             butHeight=buttonContainer.getBounds.height;
            
             buttonContainer.addEventListener("click", function(event) {
-                graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
-                shape3 = new createjs.Shape(graphics);
-                
-                var img = new Image();  
+                 });
 
-                img.src = "images/yeoman.png"; // image from folder        
-                var loading_img = new createjs.Bitmap(img);  
-
-                
-            stage.addChild(shape3);
-            stage.addChild(loading_img);
-            stage.update(); });
+            buttonContainer.on("mouseover", alterTheButton);
+             buttonContainer.on("mouseout", changeButtonBack);
             
-
+            function alterTheButton(event) {
+                buttonContainer.alpha=0.8
+            }
+            
+               function changeButtonBack(event) {
+                buttonContainer.alpha=1
+            }
+            
             stage.addChild(text);
             stage.addChild(buttonContainer);
-            trad=0.99;
+            
             createjs.Ticker.setInterval(25);
             createjs.Ticker.setFPS(10);
             createjs.Ticker.addEventListener("tick", tick);
+            
             function tick(event) { 
-                buttonContainer.setTransform(0,0,1,1,0,0,0,0)
-                trad=trad+1;
-                console.log(trad);
+            
                 stage.update();
             }
 
