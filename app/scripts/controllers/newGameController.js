@@ -21,21 +21,17 @@
             graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 -15, canvas.height/2+21, 30, 9);
             var shape2 = new createjs.Shape(graphics);
             
-            
+            text = centerThis(canvas,text);        
             text2 = centerThis(canvas,text2);
             text2.y = text2.y+25;
             text2.addEventListener("click", function(event) { alert("clicked"); });
             shape.addEventListener("click", function(event) { alert("clicked"); });
-            shape2.addEventListener("click", function(event) { alert("clicked"); });
-
-            text=centerThis(canvas,text);
-         
+            shape2.addEventListener("click", function(event) { alert("clicked"); });           
           
             stage.addChild(text);
-        
             stage.addChild(shape);
-             stage.addChild(shape2);
-                stage.addChild(text2);
+            stage.addChild(shape2);
+            stage.addChild(text2);
             stage.update();
     }
         
