@@ -10,10 +10,27 @@
         $scope.runThis= function() {//this is newGameCanvas
             
             var canvas =document.getElementById("demoCanvas");
+           
+             var ctx = document.createElement("canvas").getContext("2d"),
+            dpr = window.devicePixelRatio || 1,
+        bsr = ctx.webkitBackingStorePixelRatio ||
+              ctx.mozBackingStorePixelRatio ||
+              ctx.msBackingStorePixelRatio ||
+              ctx.oBackingStorePixelRatio ||
+              ctx.backingStorePixelRatio || 1;
+            
+            ratio = dpr / bsr;
+              canvas.width = 800 * ratio;
+            canvas.height = 600 * ratio;
+            canvas.style.width = 800 + "px";
+            canvas.style.height = 600 + "px";
+            canvas.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+
+            
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 40px Lato", "#f8f3f5");
-            var text2 = new createjs.Text("Start", "bold 10px Lato", "#000000");           
+            var text2 = new createjs.Text("Start");           
             
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -16, canvas.height/2+20, 32, 11);
             var shape = new createjs.Shape(graphics);
