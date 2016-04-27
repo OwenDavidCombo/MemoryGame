@@ -76,12 +76,17 @@
             graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+61, 98, 28);
             var shape2 = new createjs.Shape(graphics);
             
+            
+            
+            
             text = centerThis(canvas,text);        
             text2 = centerThis(canvas,text2);
             text2.y = text2.y+75;
             
             buttonContainer = new createjs.Container();
             buttonContainer.addChild(shape,shape2,text2);
+            buttonContainer.cursor = "pointer";
+            
             butWidth=buttonContainer.getBounds.width;
             butHeight=buttonContainer.getBounds.height;
            
@@ -116,7 +121,7 @@
 
             
             stage.addChild(text,buttonContainer);
-
+            stage.enableMouseOver();
             stage.update();
     }
         
