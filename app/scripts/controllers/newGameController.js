@@ -29,22 +29,37 @@
             
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
             var stage = new createjs.Stage("demoCanvas");  
-            var text = new createjs.Text("Memory", "bold 40px Lato", "#f8f3f5");
-            var text2 = new createjs.Text("Start");           
+            var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
+            var text2 = new createjs.Text("Start", "bold 39px Lato", "#000000");           
             
-            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -16, canvas.height/2+20, 32, 11);
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
             var shape = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 -15, canvas.height/2+21, 30, 9);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+61, 98, 28);
             var shape2 = new createjs.Shape(graphics);
             
             text = centerThis(canvas,text);        
             text2 = centerThis(canvas,text2);
-            text2.y = text2.y+25;
-            text2.addEventListener("click", function(event) { alert("clicked"); });
-            shape.addEventListener("click", function(event) { alert("clicked"); });
-            shape2.addEventListener("click", function(event) { alert("clicked"); });           
-          
+            text2.y = text2.y+75;
+            
+            text2.addEventListener("click", function(event) {
+                graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
+                shape3 = new createjs.Shape(graphics);
+                stage.addChild(shape3);
+                stage.update(); });
+            
+            shape.addEventListener("click", function(event) {
+                graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
+                shape3 = new createjs.Shape(graphics);
+                stage.addChild(shape3);
+                stage.update(); });
+            
+            shape2.addEventListener("click", function(event) {
+                 graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(0, 0, canvas.width, canvas.height);
+                shape3 = new createjs.Shape(graphics);
+                stage.addChild(shape3);
+                stage.update(); });     
+            
             stage.addChild(text);
             stage.addChild(shape);
             stage.addChild(shape2);
