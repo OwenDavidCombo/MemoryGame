@@ -74,7 +74,7 @@
             
             
             text.shadow=new createjs.Shadow("#000000", 5, 5, 10);
-            text = screenService.centerThis(canvas,text);      
+            text = screenService.centerThis(canvas,text);
             text2 = screenService.centerThis(canvas,text2);
             text2.y = text2.y+75;
             stage.enableMouseOver(10);
@@ -121,14 +121,14 @@
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             
-            function alterTheButton(event) {
-                buttonContainer.alpha=0.8;
-                function clicksound(){
+            function clicksound(){
                    // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
                     createjs.Sound.registerSound("sounds/click.mp3", "mysoundID",1);
                     createjs.Sound.play("mysoundID");
-                   
-                }
+            }
+            
+            function alterTheButton(event) {
+                buttonContainer.alpha=0.8;
                 clicksound();
             }
             
