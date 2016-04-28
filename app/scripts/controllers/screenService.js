@@ -16,9 +16,12 @@
    var clicksound = function clicksound(){
            // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
            createjs.Sound.registerSound("sounds/click.mp3", "mysoundID",1);
-           createjs.Sound.play("mysoundID");
+           var instance = createjs.Sound.play("mysoundID");
+            // set the sound volume
+             instance.volume = 1;
     }
     
+   
     
     //sets resolution and size on canvas passed and returns canvas
     var setCanvasDPI= function(canvas,width,height){
