@@ -262,13 +262,13 @@
 		imageContainer.y = 30;
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
-            cardImage=deck[i]["cardImage"];
-            cardImage.x=((i%13)*50)+10;;
-            cardImage.y=(j*72)+40;
-            console.log(cardImage.getTransformedBounds());
             if(((i%13) == 0) && i != 0){
                     j+=1;
             }
+            cardImage=deck[i]["cardImage"];
+            cardImage.x=((i%13)*50)+10;;
+            cardImage.y=(j*72)+40;
+
         }
         
         stage=dealCards(stage,deck,imageContainer);
