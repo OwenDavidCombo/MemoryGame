@@ -11,7 +11,7 @@
             
             var canvas =document.getElementById("demoCanvas");
             canvas = screenService.setCanvasDPI(canvas,800,600);
-            
+             
 
             context =canvas.getContext("2d");
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
@@ -74,7 +74,7 @@
             
             
             text.shadow=new createjs.Shadow("#000000", 5, 5, 10);
-            text = screenService.centerThis(canvas,text);      
+            text = screenService.centerThis(canvas,text);
             text2 = screenService.centerThis(canvas,text2);
             text2.y = text2.y+75;
             stage.enableMouseOver(10);
@@ -99,6 +99,7 @@
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             
+            
             function alterTheButton(event) {
                 buttonContainer.alpha=0.8;
                 function clicksound(){
@@ -107,7 +108,9 @@
                     createjs.Sound.play("mysoundID");
                    
                 }
-                clicksound();
+
+                screenService.clicksound();
+
             }
             
                function changeButtonBack(event) {
@@ -136,6 +139,9 @@
             stage.addChild(buttonContainer);
             stage.enableMouseOver();
             stage.update();
+            
+           screenService.setCookie("volume","0","30");
+            
     }
         
     }//end Game Contoleer
