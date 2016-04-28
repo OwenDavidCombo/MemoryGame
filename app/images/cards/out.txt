@@ -1,0 +1,62 @@
+ Volume in drive C is OS
+ Volume Serial Number is A204-01AF
+
+ Directory of C:\Users\Owen\Desktop\MemoryGame\MemoryGame\app\images\cards
+
+04/28/2016  06:41 PM    <DIR>          .
+04/28/2016  06:41 PM    <DIR>          ..
+03/03/2011  03:00 AM            54,676 10_of_clubs.png
+03/04/2011  01:07 AM            46,241 10_of_diamonds.png
+03/04/2011  12:10 AM            46,328 10_of_hearts.png
+03/03/2011  12:40 AM            50,453 10_of_spades.png
+03/03/2011  10:40 PM            23,590 2_of_clubs.png
+03/04/2011  12:44 AM            19,815 2_of_diamonds.png
+03/04/2011  12:18 AM            20,136 2_of_hearts.png
+03/02/2011  11:56 PM            21,863 2_of_spades.png
+03/03/2011  10:40 PM            29,161 3_of_clubs.png
+03/04/2011  12:56 AM            24,257 3_of_diamonds.png
+03/04/2011  12:17 AM            24,757 3_of_hearts.png
+03/02/2011  11:54 PM            26,922 3_of_spades.png
+03/03/2011  10:39 PM            28,623 4_of_clubs.png
+03/04/2011  12:49 AM            24,212 4_of_diamonds.png
+03/04/2011  12:16 AM            24,681 4_of_hearts.png
+03/02/2011  11:59 PM            26,409 4_of_spades.png
+03/03/2011  10:34 PM            34,857 5_of_clubs.png
+03/04/2011  12:52 AM            29,319 5_of_diamonds.png
+03/04/2011  12:16 AM            29,804 5_of_hearts.png
+03/03/2011  12:02 AM            32,219 5_of_spades.png
+03/03/2011  10:33 PM            39,972 6_of_clubs.png
+03/04/2011  12:55 AM            33,692 6_of_diamonds.png
+03/04/2011  12:15 AM            33,457 6_of_hearts.png
+03/03/2011  12:05 AM            36,854 6_of_spades.png
+03/03/2011  10:33 PM            41,174 7_of_clubs.png
+03/04/2011  12:58 AM            34,168 7_of_diamonds.png
+03/04/2011  12:14 AM            34,474 7_of_hearts.png
+03/03/2011  12:08 AM            37,167 7_of_spades.png
+03/03/2011  10:29 PM            48,468 8_of_clubs.png
+03/04/2011  12:59 AM            40,441 8_of_diamonds.png
+03/04/2011  12:14 AM            40,849 8_of_hearts.png
+03/03/2011  12:15 AM            44,015 8_of_spades.png
+03/03/2011  03:00 AM            51,028 9_of_clubs.png
+03/04/2011  01:04 AM            42,981 9_of_diamonds.png
+03/04/2011  12:12 AM            43,085 9_of_hearts.png
+03/03/2011  12:36 AM            46,943 9_of_spades.png
+03/03/2011  12:58 AM            42,481 ace_of_clubs.png
+03/04/2011  12:27 AM            36,810 ace_of_diamonds.png
+03/03/2011  11:24 PM            44,136 ace_of_hearts.png
+03/02/2011  11:30 PM            61,075 ace_of_spades.png
+03/03/2011  01:06 AM            40,192 jack_of_clubs.png
+03/04/2011  12:34 AM            34,727 jack_of_diamonds.png
+03/03/2011  11:31 PM            42,091 jack_of_hearts.png
+03/02/2011  11:36 PM            40,477 jack_of_spades.png
+03/03/2011  01:04 AM            42,009 king_of_clubs.png
+03/04/2011  12:30 AM            36,412 king_of_diamonds.png
+03/03/2011  11:27 PM            43,728 king_of_hearts.png
+03/02/2011  11:31 PM            42,335 king_of_spades.png
+04/28/2016  06:41 PM                 0 out.txt
+03/03/2011  01:05 AM            45,004 queen_of_clubs.png
+03/04/2011  12:31 AM            39,185 queen_of_diamonds.png
+03/03/2011  11:30 PM            46,831 queen_of_hearts.png
+03/02/2011  11:34 PM            45,431 queen_of_spades.png
+              53 File(s)      1,950,015 bytes
+               2 Dir(s)  296,812,744,704 bytes free
