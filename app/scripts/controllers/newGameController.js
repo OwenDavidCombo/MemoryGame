@@ -1,4 +1,7 @@
 (function(){
+    update=false;
+    loop=true;
+    deck=[];
     
     angular.module("memoryApp")
     .controller("newGameController", newGameController);
@@ -14,7 +17,7 @@
              
 
             context =canvas.getContext("2d");
-            canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
+            canvas.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
             var text2 = new createjs.Text("start", "bold 30px Lato", "#000000");           
@@ -22,7 +25,9 @@
             
             var img = new Image();  
             img.src = "images/newGameCard.png"; // image from folder  
-            
+            img.onload = function(){
+                loop=true;
+            }
            
             cornercards = new createjs.Bitmap(img);
             cornercards.x=-2;
@@ -147,21 +152,6 @@
             buttonContainer.addEventListener("click", function(event) {
              var speed=1000;
                  screenService.setCookie("volume","0","30");
-              createjs.Tween.get(cornercards4, { loop: true })
-                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: canvas.width+8, y:canvas.height-20, rotation:510 }, speed, createjs.Ease.getPowInOut(4))
-                 
-                createjs.Tween.get(cornercards3, { loop: true })
-                .to({ x: -2, y:20, rotation:-30 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: canvas.width-46, y:-10, rotation:30 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
-                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
-                
-                createjs.Tween.get(cornercards, { loop: true })
-
-                
                 animateCards(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4)
                 
             });
@@ -194,14 +184,17 @@
             createjs.Ticker.addEventListener("tick", tick);
            
             
-            createjs.Ticker.addEventListener("tick", stage);
+            //createjs.Ticker.addEventListener("tick", stage);
      
             
             function tick(event) { 
-                //buttonContainer.setBounds(370+x,380)
-                //screenService.logPosition(buttonContainer)
-                //createjs.Tween.get(buttonContainer).to({alpha:1}, 1000).call(handleComplete);
-                //stage.update();
+                  if (update) {
+                        update = false; // only update once
+                        stage.update(event);
+                    }
+                if(loop){
+                    stage.update();
+                }
                
             }
             
@@ -213,7 +206,7 @@
             stage.addChild(buttonContainer);
             stage.addChild(buttonContainer2);
             stage.enableMouseOver();
-            stage.update();
+            //stage.update();
             
           screenService.setCookie("volume","1","30");
             
@@ -223,6 +216,10 @@
     
     animateCards =function(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4){
         var speed=1000;
+        
+        stage.clear();
+        startGame(stage,canvas);
+       /* 
         createjs.Tween.get(cornercards4, { loop: false })
                 .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
                 .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
@@ -248,7 +245,7 @@
                  .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4)).call(function(){
                      stage.clear();
                      startGame(stage,canvas);
-                 })
+                 })*/
     }
     
     startGame=function(stage,canvas){
@@ -306,6 +303,21 @@
     
     cardClicked =function(event){
         
+        xIndex=(event.target.x-10)/60;
+        yIndex=(event.target.y-40)/82;
+        console.log(xIndex+""+yIndex)
+        corIndex=xIndex+(yIndex*13)
+        
+        if(!(typeof firstSelection === 'undefined' || firstSelection == null)){
+            if(firstSelection.matchesThisCard(deck[corIndex])){
+                console.log("a match!")
+            }else{
+                console.log("no match") //increment guesses?
+            }
+            firstSelection=null;
+        }else{
+            firstSelection=deck[corIndex];
+        }
     } 
     
     Card = function(imgName,cardImage){
@@ -314,8 +326,8 @@
             "imgName": imgName,
             "cardImage": cardImage,  
             "matchesThisCard" : function(Card){   
-                if(value == Card.value){
-                     if(this.xPosition!=Card.xPosition && this.yPosition != Card.yPosition){
+                if(this.value == Card.value){
+                     if(this.imgName!=Card.imgName){
                          return true;
                       } 
                 }
