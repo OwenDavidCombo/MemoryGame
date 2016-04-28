@@ -263,15 +263,17 @@
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
             cardImage=deck[i]["cardImage"];
-            cardImage.x=((i%13)*50)+10;;
-            cardImage.y=(j*72)+40;
+            cardImage.x=((i%13)*60)+10;;
+            cardImage.y=(j*82)+40;
             console.log(cardImage.getTransformedBounds());
             if(((i%13) == 0) && i != 0){
                     j+=1;
             }
         }
         
+        stage.addChild(background);
         stage=dealCards(stage,deck,imageContainer);
+        
         console.log(deck);
        
     }
@@ -293,7 +295,7 @@
                 cardImage = new createjs.Bitmap(cardImg);
                 cardImage.scaleX=50/500;
                 cardImage.scaleY=72/726;
-
+                
                 cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
                 cardImage.addEventListener("click", cardClicked)
                 deck.push(Card(cardImages[i],cardImage));
