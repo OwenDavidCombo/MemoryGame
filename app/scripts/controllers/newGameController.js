@@ -23,36 +23,41 @@
             img.src = "images/newGameCard.png"; // image from folder  
             
            
-                 cornercards = new createjs.Bitmap(img);
-                 cornercards.x=-2;
-                 cornercards.y=20;
-                 cornercards.scaleX=0.5;
-                 cornercards.scaleY=0.5;
-                 cornercards.rotation= -30;
+            cornercards = new createjs.Bitmap(img);
+            cornercards.x=-2;
+            cornercards.y=20;
+            cornercards.scaleX=0.5;
+            cornercards.scaleY=0.5;
+            cornercards.rotation= -30;
 
-                 cornercards2 = new createjs.Bitmap(img);
-                    cornercards2.x=canvas.width-46;
-                    cornercards2.y=-10;
-                    cornercards2.scaleX=0.5;
-                    cornercards2.scaleY=0.5;
-                    cornercards2.rotation= 30;
+            cornercards2 = new createjs.Bitmap(img);
+            cornercards2.x=canvas.width-46;
+            cornercards2.y=-10;
+            cornercards2.scaleX=0.5;
+            cornercards2.scaleY=0.5;
+            cornercards2.rotation= 30;
 
-                 cornercards3 = new createjs.Bitmap(img);
-                    cornercards3.x=50;
-                    cornercards3.y=canvas.height+10;
-                    cornercards3.scaleX=0.5;
-                    cornercards3.scaleY=0.5;
-                    cornercards3.rotation= -150;
+            cornercards3 = new createjs.Bitmap(img);
+            cornercards3.x=50;
+            cornercards3.y=canvas.height+10;
+            cornercards3.scaleX=0.5;
+            cornercards3.scaleY=0.5;
+            cornercards3.rotation= -150;
 
-                cornercards4 = new createjs.Bitmap(img);
-                    cornercards4.x=canvas.width+8;
-                    cornercards4.y=canvas.height-20;
-                    cornercards4.scaleX=0.5;
-                    cornercards4.scaleY=0.5;
-                    cornercards4.rotation= 150;
+            cornercards4 = new createjs.Bitmap(img);
+            cornercards4.x=canvas.width+8;
+            cornercards4.y=canvas.height-20;
+            cornercards4.scaleX=0.5;
+            cornercards4.scaleY=0.5;
+            cornercards4.rotation= 150;
             
-            stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
-                   
+            
+            
+            var img2 = new Image(); 
+            img2.src = "images/table2.jpg";
+            background = new createjs.Bitmap(img2);
+            background.scaleX=background.scaleY=2;
+            
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
             var shape = new createjs.Shape(graphics);
 
@@ -108,6 +113,8 @@
                
             }
             
+            stage.addChild(background);
+            stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
             stage.addChild(textContainer);
             stage.addChild(buttonContainer);
             stage.enableMouseOver();
