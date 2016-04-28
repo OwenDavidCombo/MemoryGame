@@ -173,7 +173,7 @@
             
             
             function alterTheButton(event) {
-                buttonContainer.alpha=0.8;
+                event.currentTarget.alpha=0.8;
                 function clicksound(){
                    // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
                     createjs.Sound.registerSound("sounds/music.mp3", "mysoundID",1);
@@ -186,7 +186,7 @@
             }
             
                function changeButtonBack(event) {
-                buttonContainer.alpha=1
+                event.currentTarget.alpha=1
             }
             
             createjs.Ticker.setInterval(25);
