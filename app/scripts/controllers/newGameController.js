@@ -74,12 +74,20 @@
             
             
             
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+113, 100, 30);
+            var shape3 = new createjs.Shape(graphics);
+
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+114, 98, 28);
+            var shape4 = new createjs.Shape(graphics);
+            
+            
+            
             text.shadow=new createjs.Shadow("#000000", 5, 5, 10);
             text = screenService.centerThis(canvas,text);
             text2 = screenService.centerThis(canvas,text2);
             text2.y = text2.y+75;
             text3 = screenService.centerThis(canvas,text3);
-            text3.y = text3.y+105;
+            text3.y = text3.y+125;
             
             stage.enableMouseOver(10);
             
@@ -94,6 +102,48 @@
             butWidth=buttonContainer.getBounds.width;
             butHeight=buttonContainer.getBounds.height;
            
+            buttonContainer2 = new createjs.Container();
+            buttonContainer2.addChild(shape3,shape4,text3);
+            buttonContainer2.cursor = "pointer";
+            shape3.shadow=shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            butWidth2=buttonContainer2.getBounds.width;
+            butHeight2=buttonContainer2.getBounds.height;
+        
+            
+            buttonContainer2.addEventListener("click",function(event){
+                    stage.removeAllChildren();
+                    stage.addChild(background);
+                    stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
+                    stage.addChild(textContainer);
+               
+                        var speed=1000;
+                createjs.Tween.get(cornercards4, { loop: false })
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:510 }, speed, createjs.Ease.getPowInOut(4))
+                 
+                createjs.Tween.get(cornercards3, { loop: false })
+                .to({ x: -2, y:20, rotation:-30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width-46, y:-10, rotation:30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                
+                createjs.Tween.get(cornercards, { loop: false })
+                .to({ x: canvas.width-46, y:-10, rotation:30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                
+                 createjs.Tween.get(cornercards2, { loop: false })
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                 .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4))
+               
+                stage.clear();                                  
+            });
+                                   
             buttonContainer.addEventListener("click", function(event) {
              var speed=1000;
                  screenService.setCookie("volume","0","30");
@@ -118,6 +168,8 @@
 
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
+            buttonContainer2.on("mouseover", alterTheButton);
+             buttonContainer2.on("mouseout", changeButtonBack);
             
             
             function alterTheButton(event) {
@@ -154,10 +206,12 @@
             }
             
             stage.addChild(background);
-            stage.addChild(text3);
+
+           
             stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
             stage.addChild(textContainer);
             stage.addChild(buttonContainer);
+            stage.addChild(buttonContainer2);
             stage.enableMouseOver();
             stage.update();
             
