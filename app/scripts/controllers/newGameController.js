@@ -256,31 +256,64 @@
         stage.clear();
         deck=createNewDeck();
         deck=shuffle(deck);
+        
+        imageContainer = new createjs.Container();
+		imageContainer.x = 30;
+		imageContainer.y = 30;
+        var j=0;
+        for (i = 0; i < cardImages.length; i++) {
+            cardImage=deck[i]["cardImage"];
+            cardImage.x=((i%13)*50)+10;;
+            cardImage.y=(j*72)+40;
+            console.log(cardImage.getTransformedBounds());
+            if(((i%13) == 0) && i != 0){
+                    j+=1;
+            }
+        }
+        
+        stage=dealCards(stage,deck,imageContainer);
         console.log(deck);
        
     }
     
     dealCards=function(stage,deck){
-        var circle = new createjs.Shape();
-        
-        return stage();
+        for (i = 0; i < cardImages.length; i++) {         
+            imageContainer.addChild(deck[i]["cardImage"])
+        }
+        stage.addChild(imageContainer)
+        return stage;
     }
     
     createNewDeck=function(){
           deck=[];
+          var j=0;
           for (i = 0; i < cardImages.length; i++) {
-                deck.push(Card(0,0,cardImages[i]));
+                cardImg = new Image();
+                cardImg.src="images/cards/"+cardImages[i]+"";
+                cardImage = new createjs.Bitmap(cardImg);
+                cardImage.scaleX=50/500;
+                cardImage.scaleY=72/726;
+
+                cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
+                cardImage.addEventListener("click", cardClicked)
+                deck.push(Card(cardImages[i],cardImage));
+              
+                if(((i%13) == 0) && i != 0){
+                    j+=1;
+                }
           }
           return deck;
     }
     
+    cardClicked =function(event){
+        
+    } 
     
-    Card = function(xPosition,yPosition,imgName){
+    Card = function(imgName,cardImage){
         return{
-            "xPosition" : xPosition,
-            "yPosition" : yPosition,
             "value" : imageToValue[imgName],
             "imgName": imgName,
+            "cardImage": cardImage,  
             "matchesThisCard" : function(Card){   
                 if(value == Card.value){
                      if(this.xPosition!=Card.xPosition && this.yPosition != Card.yPosition){
