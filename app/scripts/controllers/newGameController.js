@@ -121,15 +121,10 @@
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             
-            function clicksound(){
-                   // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
-                    createjs.Sound.registerSound("sounds/click.mp3", "mysoundID",1);
-                    createjs.Sound.play("mysoundID");
-            }
             
             function alterTheButton(event) {
                 buttonContainer.alpha=0.8;
-                clicksound();
+                screenService.clicksound();
             }
             
                function changeButtonBack(event) {

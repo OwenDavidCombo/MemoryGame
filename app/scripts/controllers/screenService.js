@@ -9,8 +9,15 @@
         this.setCanvasDPI = setCanvasDPI;
         this.centerThis = centerThis;  
         this.logPosition = logPosition;
+        this.clicksound = clicksound;
     }
     
+    
+   var clicksound = function clicksound(){
+           // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
+           createjs.Sound.registerSound("sounds/click.mp3", "mysoundID",1);
+           createjs.Sound.play("mysoundID");
+    }
     
     
     //sets resolution and size on canvas passed and returns canvas
