@@ -11,7 +11,7 @@
             
             var canvas =document.getElementById("demoCanvas");
             canvas = screenService.setCanvasDPI(canvas,800,600);
-            
+             
 
             context =canvas.getContext("2d");
             canvas.style.backgroundColor = 'rgba(0, 255, 127, 0.8)';
@@ -153,6 +153,15 @@
             stage.addChild(buttonContainer);
             stage.enableMouseOver();
             stage.update();
+            
+            function setCookie(cname, cvalue, exdays) {
+                  var d = new Date(), expires = "";
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+           screenService.setCookie("volume","0","30");
+            
     }
         
     }//end Game Contoleer
