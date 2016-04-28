@@ -154,12 +154,6 @@
             stage.enableMouseOver();
             stage.update();
             
-            function setCookie(cname, cvalue, exdays) {
-                  var d = new Date(), expires = "";
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                expires = "expires=" + d.toGMTString();
-                document.cookie = cname + "=" + cvalue + "; " + expires;
-            }
            screenService.setCookie("volume","0","30");
             
     }
