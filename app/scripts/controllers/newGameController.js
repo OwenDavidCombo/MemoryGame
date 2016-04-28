@@ -262,20 +262,13 @@
 		imageContainer.y = 30;
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
-<<<<<<< HEAD
             cardImage=deck[i]["cardImage"];
             cardImage.x=((i%13)*60)+10;;
             cardImage.y=(j*82)+40;
             console.log(cardImage.getTransformedBounds());
-=======
->>>>>>> origin/master
             if(((i%13) == 0) && i != 0){
                     j+=1;
             }
-            cardImage=deck[i]["cardImage"];
-            cardImage.x=((i%13)*50)+10;;
-            cardImage.y=(j*72)+40;
-
         }
         
         stage.addChild(background);
