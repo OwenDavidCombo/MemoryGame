@@ -91,7 +91,7 @@
             buttonContainer = new createjs.Container();
             buttonContainer.addChild(shape,shape2,text2);
             buttonContainer.cursor = "pointer";
-            
+            shape.shadow=shadow=new createjs.Shadow("#000000", 5, 5, 10);
             butWidth=buttonContainer.getBounds.width;
             butHeight=buttonContainer.getBounds.height;
            
@@ -118,7 +118,7 @@
             createjs.Ticker.addEventListener("tick", tick);
             
             function tick(event) { 
-            
+                 text.shadow=new createjs.Shadow("#000000", 5, 5, 10);
                 stage.update();
             }
 
