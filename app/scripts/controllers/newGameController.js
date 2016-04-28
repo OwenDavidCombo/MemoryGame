@@ -258,17 +258,16 @@
         deck=shuffle(deck);
         
         imageContainer = new createjs.Container();
-		imageContainer.x = 30;
+		imageContainer.x = 3;
 		imageContainer.y = 30;
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
-            cardImage=deck[i]["cardImage"];
-            cardImage.x=((i%13)*60)+10;;
-            cardImage.y=(j*82)+40;
-            console.log(cardImage.getTransformedBounds());
             if(((i%13) == 0) && i != 0){
                     j+=1;
             }
+            cardImage=deck[i]["cardImage"];
+            cardImage.x=((i%13)*60)+10;
+            cardImage.y=(j*82)+40;
         }
         
         stage.addChild(background);
@@ -288,7 +287,7 @@
     
     createNewDeck=function(){
           deck=[];
-          var j=0;
+ 
           for (i = 0; i < cardImages.length; i++) {
                 cardImg = new Image();
                 cardImg.src="images/cards/"+cardImages[i]+"";
@@ -300,9 +299,7 @@
                 cardImage.addEventListener("click", cardClicked)
                 deck.push(Card(cardImages[i],cardImage));
               
-                if(((i%13) == 0) && i != 0){
-                    j+=1;
-                }
+
           }
           return deck;
     }
