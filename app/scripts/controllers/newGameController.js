@@ -18,7 +18,8 @@
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
             var text2 = new createjs.Text("start", "bold 30px Lato", "#000000");           
-
+             var text3 = new createjs.Text("options", "bold 30px Lato", "#000000");       
+            
             var img = new Image();  
             img.src = "images/newGameCard.png"; // image from folder  
             
@@ -77,6 +78,9 @@
             text = screenService.centerThis(canvas,text);
             text2 = screenService.centerThis(canvas,text2);
             text2.y = text2.y+75;
+            text3 = screenService.centerThis(canvas,text3);
+            text3.y = text3.y+105;
+            
             stage.enableMouseOver(10);
             
             textContainer = new createjs.Container();
@@ -92,6 +96,7 @@
            
             buttonContainer.addEventListener("click", function(event) {
                 var speed=1000;
+                 screenService.setCookie("volume","0","30");
               createjs.Tween.get(cornercards4, { loop: true })
                 .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
                 .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
@@ -148,13 +153,14 @@
             }
             
             stage.addChild(background);
+            stage.addChild(text3);
             stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
             stage.addChild(textContainer);
             stage.addChild(buttonContainer);
             stage.enableMouseOver();
             stage.update();
             
-           screenService.setCookie("volume","0","30");
+          screenService.setCookie("volume","1","30");
             
     }
         
