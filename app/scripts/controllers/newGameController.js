@@ -51,6 +51,10 @@
                     cornercards4.scaleY=0.5;
                     cornercards4.rotation= 150;
             
+            img.onload =function(){
+                stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
+                stage.update();
+            }
             stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
                    
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
@@ -79,8 +83,32 @@
             butHeight=buttonContainer.getBounds.height;
            
             buttonContainer.addEventListener("click", function(event) {
-
-                 });
+                var speed=1000;
+              createjs.Tween.get(cornercards4, { loop: true })
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:510 }, speed, createjs.Ease.getPowInOut(4))
+                 
+                createjs.Tween.get(cornercards3, { loop: true })
+                .to({ x: -2, y:20, rotation:-30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width-46, y:-10, rotation:30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                
+                createjs.Tween.get(cornercards, { loop: true })
+                
+                .to({ x: canvas.width-46, y:-10, rotation:30 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                
+                 createjs.Tween.get(cornercards2, { loop: true })
+                .to({ x: canvas.width+8, y:canvas.height-20, rotation:150 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
+                .to({ x: -2, y:20, rotation:330 }, speed, createjs.Ease.getPowInOut(4))
+                 .to({ x: canvas.width-46, y:-10, rotation:390 }, speed, createjs.Ease.getPowInOut(4))
+            });
 
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
@@ -98,13 +126,14 @@
             createjs.Ticker.addEventListener("tick", tick);
            
             
+            createjs.Ticker.addEventListener("tick", stage);
      
             
             function tick(event) { 
                 //buttonContainer.setBounds(370+x,380)
                 //screenService.logPosition(buttonContainer)
                 //createjs.Tween.get(buttonContainer).to({alpha:1}, 1000).call(handleComplete);
-                stage.update();
+                //stage.update();
                
             }
             
