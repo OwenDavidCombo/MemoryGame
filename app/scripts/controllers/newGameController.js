@@ -95,8 +95,7 @@
             butHeight=buttonContainer.getBounds.height;
            
             buttonContainer.addEventListener("click", function(event) {
-<<<<<<< HEAD
-                var speed=1000;
+             var speed=1000;
                  screenService.setCookie("volume","0","30");
               createjs.Tween.get(cornercards4, { loop: true })
                 .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
@@ -111,8 +110,7 @@
                 .to({ x: 50, y:canvas.height+10, rotation:210 }, speed, createjs.Ease.getPowInOut(4))
                 
                 createjs.Tween.get(cornercards, { loop: true })
-=======
->>>>>>> origin/master
+
                 
                 animateCards(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4)
                 
