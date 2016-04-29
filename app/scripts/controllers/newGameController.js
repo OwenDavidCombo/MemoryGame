@@ -397,12 +397,15 @@
         if(!(typeof firstSelection === 'undefined' || firstSelection == null)){
             if(firstSelection.matchesThisCard(deck[corIndex])){
                 console.log("a match!")
+                imageContainer.removeChild(event.target);
+                imageContainer.removeChild(firstChild);
             }else{
                 console.log("no match") //increment guesses?
             }
             firstSelection=null;
         }else{
             firstSelection=deck[corIndex];
+            firstChild=event.target;
         }
     } 
     
