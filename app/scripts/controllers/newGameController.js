@@ -404,6 +404,8 @@
                 cardImage.cursor="pointer";
                 cardImage.addEventListener("click", function(event) {            
                         stage.removeChild(event.currentTarget);
+                        setTimeout(function(){stage.addChild(event.currentTarget)}, 2000);
+                       
 
                 });
                
