@@ -89,7 +89,7 @@
             img4.src = "images/cardback.png";
             cardback = new createjs.Bitmap(img4);
             cardback.x=55;
-            cardback.y=canvas.height-190;
+            cardback.y=canvas.height-150;
             cardback.scaleX=0.075;
             cardback.scaleY=0.075;
             cardback.cursor="pointer";
@@ -375,7 +375,7 @@
         
         imageContainer = new createjs.Container();
 		imageContainer.x = (canvas.width-790)/2;
-		imageContainer.y = 30;
+		imageContainer.y = 50;
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
             if(((i%13) == 0) && i != 0){
@@ -449,10 +449,10 @@
     
     moveCard = function(card,card2){
          createjs.Tween.get(card, { loop: false })
-         .to({ x: 10, y:440}, 1000, createjs.Ease.getPowInOut(4)).call(
+         .to({ x: 10, y:460}, 1000, createjs.Ease.getPowInOut(4)).call(
             function(){
                 createjs.Tween.get(card2, { loop: false })
-                .to({ x: 10, y:440}, 1000, createjs.Ease.getPowInOut(4))
+                .to({ x: 10, y:460}, 1000, createjs.Ease.getPowInOut(4))
             }
          )
          card.removeEventListener("click",cardClicked);
