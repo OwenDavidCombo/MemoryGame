@@ -252,13 +252,6 @@
             
             function alterTheButton(event) {
                 event.currentTarget.alpha=0.8;
-                function clicksound(){
-                   // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
-                    createjs.Sound.registerSound("sounds/music.mp3", "mysoundID",1);
-                    createjs.Sound.play("mysoundID");
-                   
-                }
-
                 screenService.clicksound();
 
             }
@@ -415,10 +408,10 @@
     
     moveCard = function(card,card2){
          createjs.Tween.get(card, { loop: false })
-         .to({ x: 100, y:440}, 1000, createjs.Ease.getPowInOut(4)).call(
+         .to({ x: 10, y:440}, 1000, createjs.Ease.getPowInOut(4)).call(
             function(){
                 createjs.Tween.get(card2, { loop: false })
-                .to({ x: 100, y:440}, 1000, createjs.Ease.getPowInOut(4))
+                .to({ x: 10, y:440}, 1000, createjs.Ease.getPowInOut(4))
             }
          )
          card.removeEventListener("click",cardClicked);
