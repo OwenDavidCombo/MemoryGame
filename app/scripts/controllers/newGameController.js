@@ -2,6 +2,8 @@
     update=false;
     loop=true;
     deck=[];
+    stage="";
+    imageContainer="";
     
     angular.module("memoryApp")
     .controller("newGameController", newGameController);
@@ -18,7 +20,7 @@
 
             context =canvas.getContext("2d");
             canvas.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            var stage = new createjs.Stage("demoCanvas");  
+            stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
             var text2 = new createjs.Text("start", "bold 30px Lato", "#000000");           
             var text3 = new createjs.Text("options", "bold 30px Lato", "#000000");
@@ -399,8 +401,8 @@
                 console.log("a match!")
                 //imageContainer.removeChild(event.target);
                 //imageContainer.removeChild(firstChild);
-                moveCard(firstChild);
-                moveCard(event.target);
+                moveCard(firstChild,event.target);
+               // moveCard();
             }else{
                 console.log("no match") //increment guesses?
             }
@@ -419,9 +421,17 @@
                 .to({ x: 100, y:440}, 1000, createjs.Ease.getPowInOut(4))
             }
          )
-        
+         card.removeEventListener("click",cardClicked);
+         card2.removeEventListener("click",cardClicked);
+         card.addEventListener("click", redeal);
+
     }
     
+    redeal =function(){
+        stage.removeChild(imageContainer);
+            console.log("redeal")
+    }
+            
     Card = function(imgName,cardImage){
         return{
             "value" : imageToValue[imgName],
