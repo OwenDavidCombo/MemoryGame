@@ -85,6 +85,15 @@
             icon.scaleY=0.2;
             icon.cursor="pointer";
             
+             var img4 = new Image(); 
+            img4.src = "images/cardback.png";
+            cardback = new createjs.Bitmap(img4);
+            cardback.x=55;
+            cardback.y=canvas.height-190;
+            cardback.scaleX=0.075;
+            cardback.scaleY=0.075;
+            cardback.cursor="pointer";
+            
             
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
             var shape = new createjs.Shape(graphics);
@@ -258,6 +267,11 @@
                          
             });
             
+            cardback.addEventListener("click", function(event) {            
+                 redeal();
+                         
+            });
+            
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             buttonContainer2.on("mouseover", alterTheButton);
@@ -268,6 +282,7 @@
              buttonContainer4.on("mouseout", changeButtonBack);
               buttonContainer5.on("mouseover", alterTheButton);
              buttonContainer5.on("mouseout", changeButtonBack);
+             
             icon.on("mouseover", alterTheButton);
             icon.on("mouseout", changeButtonBack);
             
@@ -371,7 +386,7 @@
             cardImage.y=(j*82)+40;
         }
         
-        stage.addChild(background);
+        stage.addChild(background,cardback);
         stage.addChild(icon);
         stage=dealCards(stage,deck,imageContainer);
         
@@ -399,6 +414,8 @@
                 
                 cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
                 cardImage.addEventListener("click", cardClicked)
+                cardImage.cursor="pointer";
+              
                 deck.push(Card(cardImages[i],cardImage));
               
 
