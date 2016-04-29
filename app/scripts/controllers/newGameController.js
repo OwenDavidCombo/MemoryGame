@@ -320,14 +320,11 @@
                
             }
             
-            stage.addChild(background);
-
-           
+            stage.addChild(background);           
             stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
             stage.addChild(textContainer);
             stage.addChild(buttonContainer);
-            stage.addChild(buttonContainer2);
-            
+            stage.addChild(buttonContainer2);            
             stage.enableMouseOver();
             //stage.update();
             
@@ -393,6 +390,34 @@
         stage.addChild(background,cardback);
         stage.addChild(icon);
         stage=dealCards(stage,deck,imageContainer);
+        
+        j=0;
+        for (i = 0; i < cardImages.length; i++) {
+                cardImg = new Image();
+                cardImg.src="images/cardback.png";
+                cardImage = new createjs.Bitmap(cardImg);
+                cardImage.scaleX=0.075;
+                cardImage.scaleY=0.075;
+                
+                cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
+                
+                cardImage.cursor="pointer";
+                cardImage.addEventListener("click", function(event) {            
+                        stage.removeChild(event.currentTarget);
+
+                });
+               
+                  if(((i%13) == 0) && i != 0){
+                        j+=1;
+                }
+
+                cardImage.x=((i%13)*60)+112;
+                cardImage.y=(j*82)+90;
+            
+                stage.addChild(cardImage);
+
+          }
+        
         
         console.log(deck);
        
@@ -494,7 +519,7 @@
     }//end Card Function
     
     function redeal(){
-                    stage.removeChild(imageContainer);
+            stage.removeChild(imageContainer);
             console.log("redeal")
             
     }
