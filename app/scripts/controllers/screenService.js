@@ -11,6 +11,7 @@
         this.logPosition = logPosition;
         this.clicksound = clicksound;
         this.setCookie = setCookie;
+        this.checkVolume = checkVolume;
     }
     
     var setCookie = function setCookie(cname, cvalue, exdays) {
@@ -37,8 +38,8 @@
     var checkVolume = function checkVolume() {
         var volume = getCookie("volume");
         if (volume !== "") {
-            return (volume);
-        } else {return 1;}
+            return volume;
+        } else {setCookie("volume","1","30");return 1;}
     }
 
     

@@ -21,7 +21,11 @@
             var stage = new createjs.Stage("demoCanvas");  
             var text = new createjs.Text("Memory", "bold 120px Lato", "#f8f3f5");
             var text2 = new createjs.Text("start", "bold 30px Lato", "#000000");           
-             var text3 = new createjs.Text("options", "bold 30px Lato", "#000000");       
+            var text3 = new createjs.Text("options", "bold 30px Lato", "#000000");
+            var text4 = new createjs.Text("Volume On", "bold 30px Lato", "#000000");
+            var text5 = new createjs.Text("Volume Off", "bold 30px Lato", "#000000");
+            var text6 = new createjs.Text("Main Menu", "bold 30px Lato", "#000000");
+            
             
             var img = new Image();  
             img.src = "images/newGameCard.png"; // image from folder  
@@ -75,8 +79,7 @@
             var shape = new createjs.Shape(graphics);
 
             graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+61, 98, 28);
-            var shape2 = new createjs.Shape(graphics);
-            
+            var shape2 = new createjs.Shape(graphics);            
             
             
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+113, 100, 30);
@@ -84,6 +87,24 @@
 
             graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+114, 98, 28);
             var shape4 = new createjs.Shape(graphics);
+            
+             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+60, 170, 30);
+            var shape5 = new createjs.Shape(graphics);
+
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28);
+            var shape6 = new createjs.Shape(graphics);
+            
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+60, 170, 30);
+            var shape7 = new createjs.Shape(graphics);
+
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28);
+            var shape8 = new createjs.Shape(graphics);
+            
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+113, 170, 30);
+            var shape9 = new createjs.Shape(graphics);
+
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+114, 168, 28);
+            var shape10 = new createjs.Shape(graphics);
             
             
             
@@ -93,6 +114,14 @@
             text2.y = text2.y+75;
             text3 = screenService.centerThis(canvas,text3);
             text3.y = text3.y+125;
+            text4 = screenService.centerThis(canvas,text4);        
+            text4.y = text4.y+75;
+            text5 = screenService.centerThis(canvas,text5);
+            text5.y = text5.y+75;
+            text6 = screenService.centerThis(canvas,text6);
+            text6.y = text6.y+125;
+            
+            
             
             stage.enableMouseOver(10);
             
@@ -114,12 +143,40 @@
             butWidth2=buttonContainer2.getBounds.width;
             butHeight2=buttonContainer2.getBounds.height;
         
+            buttonContainer3 = new createjs.Container();
+            buttonContainer3.addChild(shape5,shape6,text4);
+            buttonContainer3.cursor = "pointer";
+            shape5.shadow=shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            butWidth3=buttonContainer3.getBounds.width;
+            butHeight3=buttonContainer3.getBounds.height;                
+            
+            buttonContainer4 = new createjs.Container();
+            buttonContainer4.addChild(shape7,shape8,text5);
+            buttonContainer4.cursor = "pointer";                   
+            shape7.shadow=shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            butWidth4=buttonContainer4.getBounds.width;
+            butHeight4=buttonContainer4.getBounds.height;
+            
+            buttonContainer5 = new createjs.Container();
+            buttonContainer5.addChild(shape9,shape10,text6);
+            buttonContainer5.cursor = "pointer";                   
+            shape9.shadow=shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            butWidth5=buttonContainer5.getBounds.width;
+            butHeight5=buttonContainer5.getBounds.height;
             
             buttonContainer2.addEventListener("click",function(event){
                     stage.removeAllChildren();
                     stage.addChild(background);
                     stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
                     stage.addChild(textContainer);
+                    
+                    
+                    if (screenService.checkVolume()=="0") {
+                        stage.addChild(buttonContainer3);}
+                    else {
+                        stage.addChild(buttonContainer4);
+                    }
+                stage.addChild(buttonContainer5);
                
                         var speed=1000;
                 createjs.Tween.get(cornercards4, { loop: false })
@@ -155,11 +212,39 @@
                 animateCards(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4)
                 
             });
+            
+            buttonContainer3.addEventListener("click", function(event) {            
+                 stage.removeChild(buttonContainer3);
+                 stage.addChild(buttonContainer4);
+                 screenService.setCookie("volume","1","30");       
+                 
+            });
+            
+            buttonContainer4.addEventListener("click", function(event) {            
+                 stage.removeChild(buttonContainer4);
+                 stage.addChild(buttonContainer3);
+                 screenService.setCookie("volume","0","30");                 
+            });
+            
+             buttonContainer5.addEventListener("click", function(event) {            
+                 stage.removeChild(buttonContainer4);
+                 stage.removeChild(buttonContainer3);
+                 stage.removeChild(buttonContainer5);
+                 stage.addChild(buttonContainer);
+                 stage.addChild(buttonContainer2);
+                         
+            });
 
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             buttonContainer2.on("mouseover", alterTheButton);
              buttonContainer2.on("mouseout", changeButtonBack);
+            buttonContainer3.on("mouseover", alterTheButton);
+             buttonContainer3.on("mouseout", changeButtonBack);
+            buttonContainer4.on("mouseover", alterTheButton);
+             buttonContainer4.on("mouseout", changeButtonBack);
+              buttonContainer5.on("mouseover", alterTheButton);
+             buttonContainer5.on("mouseout", changeButtonBack);
             
             
             function alterTheButton(event) {
@@ -208,7 +293,7 @@
             stage.enableMouseOver();
             //stage.update();
             
-          screenService.setCookie("volume","1","30");
+          screenService.checkVolume();
             
     }
         
