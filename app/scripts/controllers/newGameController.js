@@ -88,8 +88,8 @@
              var img4 = new Image(); 
             img4.src = "images/cardback.png";
             cardback = new createjs.Bitmap(img4);
-            cardback.x=55;
-            cardback.y=canvas.height-150;
+            cardback.x=115;
+            cardback.y=canvas.height-240;
             cardback.scaleX=0.075;
             cardback.scaleY=0.075;
             cardback.cursor="pointer";
@@ -270,7 +270,9 @@
             });
             
             cardback.addEventListener("click", function(event) {            
-                 redeal();
+                    var speed=1000;
+                 screenService.setCookie("volume","0","30");
+                animateCards(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4)
                          
             });
             
@@ -473,10 +475,7 @@
 
     }
     
-    redeal =function(){
-        stage.removeChild(imageContainer);
-            console.log("redeal")
-    }
+   
             
     Card = function(imgName,cardImage){
         return{
