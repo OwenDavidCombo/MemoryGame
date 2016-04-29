@@ -129,6 +129,7 @@
             text.shadow=new createjs.Shadow("#000000", 5, 5, 10);
             textContainer.addChild(text);
             textContainer.shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            
             buttonContainer = new createjs.Container();
             buttonContainer.addChild(shape,shape2,text2);
             buttonContainer.cursor = "pointer";
