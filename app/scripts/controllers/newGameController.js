@@ -397,8 +397,10 @@
         if(!(typeof firstSelection === 'undefined' || firstSelection == null)){
             if(firstSelection.matchesThisCard(deck[corIndex])){
                 console.log("a match!")
-                imageContainer.removeChild(event.target);
-                imageContainer.removeChild(firstChild);
+                //imageContainer.removeChild(event.target);
+                //imageContainer.removeChild(firstChild);
+                moveCard(firstChild);
+                moveCard(event.target);
             }else{
                 console.log("no match") //increment guesses?
             }
@@ -408,6 +410,17 @@
             firstChild=event.target;
         }
     } 
+    
+    moveCard = function(card,card2){
+         createjs.Tween.get(card, { loop: false })
+         .to({ x: 100, y:440}, 1000, createjs.Ease.getPowInOut(4)).call(
+            function(){
+                createjs.Tween.get(card2, { loop: false })
+                .to({ x: 100, y:440}, 1000, createjs.Ease.getPowInOut(4))
+            }
+         )
+        
+    }
     
     Card = function(imgName,cardImage){
         return{
