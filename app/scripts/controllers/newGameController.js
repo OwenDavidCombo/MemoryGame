@@ -343,7 +343,7 @@
         deck=shuffle(deck);
         
         imageContainer = new createjs.Container();
-		imageContainer.x = 3;
+		imageContainer.x = (canvas.width-790)/2;
 		imageContainer.y = 30;
         var j=0;
         for (i = 0; i < cardImages.length; i++) {
