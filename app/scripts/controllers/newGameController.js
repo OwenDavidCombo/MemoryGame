@@ -76,7 +76,16 @@
             }
             stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
                    
-
+            var img3 = new Image(); 
+            img3.src = "images/menuIcon.png";
+            icon = new createjs.Bitmap(img3);
+            icon.x=canvas.width-80;
+            icon.y=canvas.height-80;
+            icon.scaleX=0.2;
+            icon.scaleY=0.2;
+            icon.cursor="pointer";
+            
+            
             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
             var shape = new createjs.Shape(graphics);
 
@@ -238,6 +247,17 @@
                          
             });
 
+            icon.addEventListener("click", function(event) {            
+                 stage.removeAllChildren();
+                  stage.addChild(background);
+                 stage.addChild(buttonContainer);
+                stage.addChild(buttonContainer2);
+                 stage.addChild(textContainer);
+                 stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
+                 stage.addChild(cornercards);
+                         
+            });
+            
             buttonContainer.on("mouseover", alterTheButton);
              buttonContainer.on("mouseout", changeButtonBack);
             buttonContainer2.on("mouseover", alterTheButton);
@@ -248,6 +268,8 @@
              buttonContainer4.on("mouseout", changeButtonBack);
               buttonContainer5.on("mouseover", alterTheButton);
              buttonContainer5.on("mouseout", changeButtonBack);
+            icon.on("mouseover", alterTheButton);
+            icon.on("mouseout", changeButtonBack);
             
             
             function alterTheButton(event) {
@@ -286,6 +308,7 @@
             stage.addChild(textContainer);
             stage.addChild(buttonContainer);
             stage.addChild(buttonContainer2);
+            
             stage.enableMouseOver();
             //stage.update();
             
@@ -349,6 +372,7 @@
         }
         
         stage.addChild(background);
+        stage.addChild(icon);
         stage=dealCards(stage,deck,imageContainer);
         
         console.log(deck);
