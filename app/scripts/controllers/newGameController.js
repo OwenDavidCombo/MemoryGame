@@ -444,17 +444,27 @@
         }else{
             firstSelection=deck[corIndex];
             firstChild=event.target;
+            console.log(event);
         }
     } 
-    
+    cardStackX=10;
+    cardStackZ=1;
     moveCard = function(card,card2){
+         imageContainer.setChildIndex( card, imageContainer.getNumChildren()-1);
+         imageContainer.setChildIndex( card2, imageContainer.getNumChildren()-1);
          createjs.Tween.get(card, { loop: false })
-         .to({ x: 10, y:460}, 1000, createjs.Ease.getPowInOut(4)).call(
+         .to({ x: cardStackX, y:460}, 1000, createjs.Ease.getPowInOut(4)).call(
             function(){
                 createjs.Tween.get(card2, { loop: false })
-                .to({ x: 10, y:460}, 1000, createjs.Ease.getPowInOut(4))
+                .to({ x: cardStackX, y:460}, 1000, createjs.Ease.getPowInOut(4)).call(
+                    function(){
+                        cardStackX+=10;
+                        cardStackZ+=1;
+                    }
+                )
             }
          )
+         
          card.removeEventListener("click",cardClicked);
          card2.removeEventListener("click",cardClicked);
          card.addEventListener("click", redeal);
