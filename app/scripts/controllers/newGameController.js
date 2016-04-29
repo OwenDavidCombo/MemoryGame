@@ -95,35 +95,37 @@
             cardback.cursor="pointer";
             
             
-            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+60, 100, 30);
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRoundRect(canvas.width/2 -50, canvas.height/2+60, 100, 30,10);
             var shape = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+61, 98, 28);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRoundRect(canvas.width/2 - 49, canvas.height/2+61, 98, 28,10);
             var shape2 = new createjs.Shape(graphics);            
             
             
-            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -50, canvas.height/2+113, 100, 30);
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRoundRect(canvas.width/2 -50, canvas.height/2+113, 100, 30,10);
             var shape3 = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 49, canvas.height/2+114, 98, 28);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRoundRect(canvas.width/2 - 49, canvas.height/2+114, 98, 28,10);
             var shape4 = new createjs.Shape(graphics);
             
-             var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+60, 170, 30);
+            
+             var graphics = new createjs.Graphics().beginFill("#000000").drawRoundRect(canvas.width/2 -85, canvas.height/2+60, 170, 30, 10);
             var shape5 = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRoundRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28, 10);
             var shape6 = new createjs.Shape(graphics);
             
-            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+60, 170, 30);
+            
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRoundRect(canvas.width/2 -85, canvas.height/2+60, 170, 30,10);
             var shape7 = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRoundRect(canvas.width/2 - 84, canvas.height/2+61, 168, 28,10);
             var shape8 = new createjs.Shape(graphics);
             
-            var graphics = new createjs.Graphics().beginFill("#000000").drawRect(canvas.width/2 -85, canvas.height/2+113, 170, 30);
+            var graphics = new createjs.Graphics().beginFill("#000000").drawRoundRect(canvas.width/2 -85, canvas.height/2+113, 170, 30,10);
             var shape9 = new createjs.Shape(graphics);
 
-            graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(canvas.width/2 - 84, canvas.height/2+114, 168, 28);
+            graphics = new createjs.Graphics().beginFill("#ffffff").drawRoundRect(canvas.width/2 - 84, canvas.height/2+114, 168, 28,10);
             var shape10 = new createjs.Shape(graphics);
             
             
