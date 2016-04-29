@@ -12,6 +12,7 @@
         this.clicksound = clicksound;
         this.setCookie = setCookie;
         this.checkVolume = checkVolume;
+       
     }
     
     var setCookie = function setCookie(cname, cvalue, exdays) {
@@ -41,7 +42,8 @@
             return volume;
         } else {setCookie("volume","1","30");return 1;}
     }
-
+    
+ 
     
    var clicksound = function clicksound(){
            // if initializeDefaultPlugins returns false, we cannot play sound in this browser           

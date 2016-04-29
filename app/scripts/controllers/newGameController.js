@@ -230,6 +230,7 @@
             });
                                    
             buttonContainer.addEventListener("click", function(event) {
+                 screenService.setCookie("page","game","30");
              var speed=1000;
                  screenService.setCookie("volume","0","30");
                 animateCards(stage,canvas,cornercards,cornercards2,cornercards3,cornercards4)
@@ -266,7 +267,8 @@
                  stage.addChild(textContainer);
                  stage.addChild(cornercards,cornercards2,cornercards3,cornercards4);
                  stage.addChild(cornercards);
-                         
+                screenService.setCookie("page","menu","30");
+                
             });
             
             cardback.addEventListener("click", function(event) {            
@@ -404,7 +406,9 @@
                 cardImage.cursor="pointer";
                 cardImage.addEventListener("click", function(event) {            
                         stage.removeChild(event.currentTarget);
-                        setTimeout(function(){stage.addChild(event.currentTarget)}, 2000);
+                        var timer = setTimeout(function(){
+                            if(checkPage()=="game"){stage.addChild(event.currentTarget);}
+                        }, 2000);
                        
 
                 });
@@ -519,6 +523,27 @@
             }
         }
     }//end Card Function
+   
+    function checkPage() {
+        var page = getCookie("page");
+        if (page !== "") {
+            return page;
+        } else {setCookie("page","game","30");return "game";}
+    }
+    
+    function getCookie(cname) {
+            var name = cname + "=", ca = document.cookie.split(';'), c = "", i = "";
+        for (i = 0; i < ca.length; i = i + 1) {
+            c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
     
     function redeal(){
             stage.removeChild(imageContainer);
