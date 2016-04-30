@@ -393,45 +393,40 @@
         stage.addChild(icon);
         stage=dealCards(stage,deck,imageContainer);
         
-        j=0;
-        for (i = 0; i < cardImages.length; i++) {
-                cardImg = new Image();
-                cardImg.src="images/cardback.png";
-                cardImage = new createjs.Bitmap(cardImg);
-                cardImage.scaleX=0.075;
-                cardImage.scaleY=0.075;
-                
-                cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
-                
-                cardImage.cursor="pointer";
-                cardImage.addEventListener("click", function(event) {            
-                        stage.removeChild(event.currentTarget);
-                        var timer = setTimeout(function(){
-                            if(checkPage()=="game"){stage.addChild(event.currentTarget);}
-                        }, 2000);
-                       
-
-                });
-               
-                  if(((i%13) == 0) && i != 0){
-                        j+=1;
-                }
-
-                cardImage.x=((i%13)*60)+112;
-                cardImage.y=(j*82)+90;
-            
-                stage.addChild(cardImage);
-
-          }
         
-        
-        console.log(deck);
+       
        
     }
     
     dealCards=function(stage,deck){
-        for (i = 0; i < cardImages.length; i++) {         
-            imageContainer.addChild(deck[i]["cardImage"])
+        j=0;
+        for (i = 0; i <deck.length; i++) {      
+              
+          if(((i%13) == 0) && i != 0){
+                        j+=1;
+                }
+
+          SpritX=((i%13)*60)+10;
+           SpritY=(j*82)+40;    
+            
+         var data = {
+                images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
+                frames: {SpritX,SpritY,width:50,height:72},
+                animations: {
+                    stand:0,
+                    front:[0,"front"],
+                    back:[1,1,"back"],
+                    speed:0.001
+                }
+            };
+            var spriteSheet = new createjs.SpriteSheet(data);
+            var animation = new createjs.Sprite(spriteSheet, "back");
+            animation.x=SpritX;
+            animation.y=SpritY;
+            animation.shadow=new createjs.Shadow("#000000", 5, 5, 10);
+            console.log(animation.getTransformedBounds())
+            animation.addEventListener("click", cardClicked);
+            imageContainer.addChild(animation)
         }
         stage.addChild(imageContainer)
         return stage;
@@ -442,44 +437,49 @@
  
           for (i = 0; i < cardImages.length; i++) {
                 cardImg = new Image();
-                cardImg.src="images/cards/"+cardImages[i]+"";
+                cardImg.src="images/resizedCards/"+cardImages[i]+"";
                 cardImage = new createjs.Bitmap(cardImg);
                 cardImage.scaleX=50/500;
                 cardImage.scaleY=72/726;
-                
-                cardImage.shadow=new createjs.Shadow("#000000", 5, 5, 10);
+                cardImage
                 cardImage.addEventListener("click", cardClicked)
                 cardImage.cursor="pointer";
-              
                 deck.push(Card(cardImages[i],cardImage));
-              
-
           }
           return deck;
     }
     
+    holdClick=false;
     cardClicked =function(event){
         
-        xIndex=(event.target.x-10)/60;
-        yIndex=(event.target.y-40)/82;
-        console.log(xIndex+""+yIndex)
-        corIndex=xIndex+(yIndex*13)
-        
-        if(!(typeof firstSelection === 'undefined' || firstSelection == null)){
-            if(firstSelection.matchesThisCard(deck[corIndex])){
-                console.log("a match!")
-                //imageContainer.removeChild(event.target);
-                //imageContainer.removeChild(firstChild);
-                moveCard(firstChild,event.target);
-               // moveCard();
-            }else{
-                console.log("no match") //increment guesses?
-            }
-            firstSelection=null;
-        }else{
-            firstSelection=deck[corIndex];
-            firstChild=event.target;
-            console.log(event);
+        if(!holdClick){
+                current=event.target;
+                event.target.gotoAndPlay("front");
+                xIndex=(event.target.x-10)/60;
+                yIndex=(event.target.y-40)/82;
+                console.log(xIndex+""+yIndex)
+                corIndex=xIndex+(yIndex*13)
+
+                if(!(typeof firstSelection === 'undefined' || firstSelection == null)){
+                    if(firstSelection.matchesThisCard(deck[corIndex])){
+                        console.log("a match!")
+                        moveCard(firstChild,event.target);
+                    }else{
+                        holdClick=true;
+                        setTimeout(function(){ 
+                            current.gotoAndPlay("back");
+                            firstChild.gotoAndPlay("back");
+                            holdClick=false;
+                        }, 1000);
+
+                        console.log("no match") //increment guesses?
+                    }
+                    firstSelection=null;
+                }else{
+                    firstSelection=deck[corIndex];
+                    firstChild=event.target;
+                    console.log(event);
+                }
         }
     } 
     cardStackX=10;
