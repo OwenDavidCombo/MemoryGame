@@ -400,7 +400,7 @@
     
     dealCards=function(stage,deck){
         j=0;
-        for (i = 0; i <deck.length-51; i++) {      
+        for (i = 0; i <deck.length; i++) {      
               
           if(((i%13) == 0) && i != 0){
                         j+=1;
@@ -410,13 +410,12 @@
            SpritY=(j*82)+40;    
             
          var data = {
-                //images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
-                images: ["images/stickman.png"],
+                images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
                 frames: {SpritX,SpritY,width:100,height:100},
                 animations: {
                     stand:0,
                     front:[0,"front"],
-                    back:[0,8,"back"],//was 1,1
+                    back:[1,1,"back"],//was 1,1
                     speed:0.001
                 }
             };
