@@ -47,7 +47,7 @@
     
    var clicksound = function clicksound(){
            // if initializeDefaultPlugins returns false, we cannot play sound in this browser           
-           createjs.Sound.registerSound("sounds/click.mp3", "mysoundID",1);
+           createjs.Sound.registerSound("sounds/test.mp3", "mysoundID",1);
            var instance = createjs.Sound.play("mysoundID");
             // set the sound volume
              instance.volume = checkVolume();

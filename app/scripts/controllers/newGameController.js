@@ -304,7 +304,7 @@
             }
             
             createjs.Ticker.setInterval(25);
-            createjs.Ticker.setFPS(30);
+            createjs.Ticker.setFPS(10);
             createjs.Ticker.addEventListener("tick", tick);
            
             
@@ -400,7 +400,7 @@
     
     dealCards=function(stage,deck){
         j=0;
-        for (i = 0; i <deck.length; i++) {      
+        for (i = 0; i <deck.length-51; i++) {      
               
           if(((i%13) == 0) && i != 0){
                         j+=1;
@@ -410,12 +410,13 @@
            SpritY=(j*82)+40;    
             
          var data = {
-                images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
-                frames: {SpritX,SpritY,width:50,height:72},
+                //images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
+                images: ["images/stickman.png"],
+                frames: {SpritX,SpritY,width:100,height:100},
                 animations: {
                     stand:0,
                     front:[0,"front"],
-                    back:[1,1,"back"],
+                    back:[0,8,"back"],//was 1,1
                     speed:0.001
                 }
             };
