@@ -304,7 +304,7 @@
             }
             
             createjs.Ticker.setInterval(25);
-            createjs.Ticker.setFPS(10);
+            createjs.Ticker.setFPS(30);
             createjs.Ticker.addEventListener("tick", tick);
            
             
@@ -411,7 +411,7 @@
             
          var data = {
                 images: [deck[i]["cardImage"].image,"images/resizedCards/cardback.png"],
-                frames: {SpritX,SpritY,width:100,height:100},
+                frames: {SpritX,SpritY,width:50,height:72},
                 animations: {
                     stand:0,
                     front:[0,"front"],
